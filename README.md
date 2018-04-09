@@ -1,6 +1,6 @@
-# BMP280
+# BME280
 
-makecode BMP280 Digital Pressure Sensor package for micro:bit  
+makecode BME280 Digital Pressure and Humidity Sensor package for micro:bit  
 
 Author: shaoziyang  
 Date:   2018.Mar  
