@@ -104,7 +104,7 @@ namespace BME280 {
     /**
      * get pressure
      */
-    //% blockId="BMP280_GET_PRESSURE" block="get pressure"
+    //% blockId="BME280_GET_PRESSURE" block="get pressure"
     //% weight=80 blockGap=8
     export function pressure(): number {
         get();
@@ -114,7 +114,7 @@ namespace BME280 {
     /**
      * get temperature
      */
-    //% blockId="BMP280_GET_TEMPERATURE" block="get temperature"
+    //% blockId="BME280_GET_TEMPERATURE" block="get temperature"
     //% weight=80 blockGap=8
     export function temperature(): number {
         get();
@@ -124,7 +124,7 @@ namespace BME280 {
     /**
      * get humidity
      */
-    //% blockId="BMP280_GET_HUMIDITY" block="get humidity"
+    //% blockId="BME280_GET_HUMIDITY" block="get humidity"
     //% weight=80 blockGap=8
     export function hunidity(): number {
         get();
@@ -134,7 +134,7 @@ namespace BME280 {
     /**
      * power on
      */
-    //% blockId="BMP280_POWER_ON" block="Power On"
+    //% blockId="BME280_POWER_ON" block="Power On"
     //% weight=61 blockGap=8
     export function PowerOn() {
         setreg(0xF4, 0x2F)
@@ -143,7 +143,7 @@ namespace BME280 {
     /**
      * power off
      */
-    //% blockId="BMP280_POWER_OFF" block="Power Off"
+    //% blockId="BME280_POWER_OFF" block="Power Off"
     //% weight=60 blockGap=8
     export function PowerOff() {
         setreg(0xF4, 0)
