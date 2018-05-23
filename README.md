@@ -24,7 +24,7 @@ to search box then search.
 ## API
 
 - function pressure()  
-get pressure in hpa  
+get pressure in pa  
 
 - function temperature()  
 return temperature in Celsius.
