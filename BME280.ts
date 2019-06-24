@@ -208,6 +208,38 @@ namespace BME280 {
     }
 
     /**
+     * humidity below Event
+     */
+    //% block="Humidity below than %dat" dat.defl=10
+    export function HumidityBelowThan(dat: number, body: () => void): void {
+        control.inBackground(function () {
+            while (true) {
+                get()
+                if (H < dat) {
+                    body()
+                }
+                basic.pause(1000)
+            }
+        })
+    }
+
+    /**
+     * humidity higher Event
+     */
+    //% block="Humidity higher than %dat" dat.defl=50
+    export function HumidityHigherThan(dat: number, body: () => void): void {
+        control.inBackground(function () {
+            while (true) {
+                get()
+                if (H > dat) {
+                    body()
+                }
+                basic.pause(1000)
+            }
+        })
+    }
+
+    /**
      * set I2C address
      */
     //% blockId="BME280_SET_ADDRESS" block="set address %addr"
