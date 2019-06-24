@@ -151,7 +151,7 @@ namespace BME280 {
      * power on
      */
     //% blockId="BME280_POWER_ON" block="Power On"
-    //% weight=61 blockGap=8
+    //% weight=22 blockGap=8
     export function PowerOn() {
         setreg(0xF4, 0x2F)
     }
@@ -160,7 +160,7 @@ namespace BME280 {
      * power off
      */
     //% blockId="BME280_POWER_OFF" block="Power Off"
-    //% weight=60 blockGap=8
+    //% weight=21 blockGap=8
     export function PowerOff() {
         setreg(0xF4, 0)
     }
@@ -275,7 +275,7 @@ namespace BME280 {
      * set I2C address
      */
     //% blockId="BME280_SET_ADDRESS" block="set address %addr"
-    //% weight=50 blockGap=8
+    //% weight=20 blockGap=8
     export function Address(addr: BME280_I2C_ADDRESS) {
         BME280_I2C_ADDR = addr
     }
