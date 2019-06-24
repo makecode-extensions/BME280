@@ -166,6 +166,16 @@ namespace BME280 {
     }
 
     /**
+     * Calculate Dewpoint
+     */
+    //% block="Dewpoint"
+    //% weight=60 blockGap=8
+    export function Dewpoint(): number {
+        get();
+        return T - Math.idiv(100 - H, 5)
+    }
+
+    /**
      * set I2C address
      */
     //% blockId="BME280_SET_ADDRESS" block="set address %addr"
