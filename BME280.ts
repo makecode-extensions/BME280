@@ -176,6 +176,38 @@ namespace BME280 {
     }
 
     /**
+     * Pressure below Event
+     */
+    //% block="Pressure below than %dat" dat.defl=100000
+    export function PressureBelowThan(dat: number, body: () => void): void {
+        control.inBackground(function () {
+            while (true) {
+                get()
+                if (P < dat) {
+                    body()
+                }
+                basic.pause(1000)
+            }
+        })
+    }
+
+    /**
+     * Pressure higher Event
+     */
+    //% block="Pressure higher than %dat" dat.defl=100000
+    export function PressureHigherThan(dat: number, body: () => void): void {
+        control.inBackground(function () {
+            while (true) {
+                get()
+                if (P > dat) {
+                    body()
+                }
+                basic.pause(1000)
+            }
+        })
+    }
+
+    /**
      * set I2C address
      */
     //% blockId="BME280_SET_ADDRESS" block="set address %addr"
