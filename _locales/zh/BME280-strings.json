@@ -1,0 +1,17 @@
+{
+    "BME280.pressure|block": "大气压",
+    "BME280.temperature|block": "温度",
+    "BME280.humidity|block": "湿度",
+    "BME280.PowerOn|block": "打开传感器",
+    "BME280.PowerOff|block": "关闭传感器",
+    "BME280.Address|block": "传感器地址",
+    "BME280.PowerOff|block": "关闭传感器",
+    "BME280.Dewpoint|block": "露点",
+    "BME280.PressureBelowThan|block": "气压低于 %dat",
+    "BME280.PressureHigherThan|block": "气压高于 %dat",
+    "BME280.HumidityBelowThan|block": "湿度低于 %dat",
+    "BME280.HumidityHigherThan|block": "湿度高于 %dat",
+    "BME280.TemperatureBelowThan|block": "温度低于 %dat",
+    "BME280.TemperatureHigherThan|block": "温度高于 %dat",
+    "BME280.Address|block": "设置传感器地址 %addr"
+}

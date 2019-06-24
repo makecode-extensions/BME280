@@ -8,6 +8,7 @@
     },
     "files": [
         "README.md",
+        "_locales/zh/BME280-strings.json",
         "BME280.ts"
     ],
     "testFiles": [
