@@ -240,6 +240,38 @@ namespace BME280 {
     }
 
     /**
+     * temperature below Event
+     */
+    //% block="Temperature below than %dat" dat.defl=10
+    export function TemperatureBelowThan(dat: number, body: () => void): void {
+        control.inBackground(function () {
+            while (true) {
+                get()
+                if (T < dat) {
+                    body()
+                }
+                basic.pause(1000)
+            }
+        })
+    }
+
+    /**
+     * temperature higher Event
+     */
+    //% block="Temperature higher than %dat" dat.defl=30
+    export function TemperatureHigherThan(dat: number, body: () => void): void {
+        control.inBackground(function () {
+            while (true) {
+                get()
+                if (T > dat) {
+                    body()
+                }
+                basic.pause(1000)
+            }
+        })
+    }
+
+    /**
      * set I2C address
      */
     //% blockId="BME280_SET_ADDRESS" block="set address %addr"
