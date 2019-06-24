@@ -11,6 +11,20 @@ enum BME280_I2C_ADDRESS {
     ADDR_0x77 = 0x77
 }
 
+enum BME280_T {
+    //% block="C"
+    T_C = 0,
+    //% block="F"
+    T_F = 1
+}
+
+enum BME280_P {
+    //% block="Pa"
+    Pa = 0,
+    //% block="hPa"
+    hPa = 1
+}
+
 /**
  * BME280 block
  */
@@ -76,7 +90,7 @@ namespace BME280 {
         let var1 = (((adc_T >> 3) - (dig_T1 << 1)) * dig_T2) >> 11
         let var2 = (((((adc_T >> 4) - dig_T1) * ((adc_T >> 4) - dig_T1)) >> 12) * dig_T3) >> 14
         let t = var1 + var2
-        T = ((t * 5 + 128) >> 8) / 100
+        T = Math.idiv((t * 5 + 128) >> 8, 100)
         var1 = (t >> 1) - 64000
         var2 = (((var1 >> 2) * (var1 >> 2)) >> 11) * dig_P6
         var2 = var2 + ((var1 * dig_P5) << 1)
@@ -87,7 +101,7 @@ namespace BME280 {
             return; // avoid exception caused by division by zero
         let adc_P = (getreg(0xF7) << 12) + (getreg(0xF8) << 4) + (getreg(0xF9) >> 4)
         let _p = ((1048576 - adc_P) - (var2 >> 12)) * 3125
-        _p = (_p / var1) * 2;
+        _p = Math.idiv(_p, var1) * 2;
         var1 = (dig_P9 * (((_p >> 3) * (_p >> 3)) >> 13)) >> 12
         var2 = (((_p >> 2)) * dig_P8) >> 13
         P = _p + ((var1 + var2 + dig_P7) >> 4)
@@ -98,33 +112,35 @@ namespace BME280 {
         var2 = var1 - (((((var1 >> 15) * (var1 >> 15)) >> 7) * dig_H1) >> 4)
         if (var2 < 0) var2 = 0
         if (var2 > 419430400) var2 = 419430400
-        H = (var2 >> 12) / 1024
+        H = (var2 >> 12) >> 10
     }
 
     /**
      * get pressure
      */
-    //% blockId="BME280_GET_PRESSURE" block="get pressure"
+    //% blockId="BME280_GET_PRESSURE" block="pressure %u"
     //% weight=80 blockGap=8
-    export function pressure(): number {
+    export function pressure(u: BME280_P): number {
         get();
-        return P;
+        if (u == BME280_P.Pa) return P;
+        else return Math.idiv(P, 100)
     }
 
     /**
      * get temperature
      */
-    //% blockId="BME280_GET_TEMPERATURE" block="get temperature"
+    //% blockId="BME280_GET_TEMPERATURE" block="temperature %u"
     //% weight=80 blockGap=8
-    export function temperature(): number {
+    export function temperature(u: BME280_T): number {
         get();
-        return T;
+        if (u == BME280_T.T_C) return T;
+        else return 32 + Math.idiv(T * 9, 5)
     }
 
     /**
      * get humidity
      */
-    //% blockId="BME280_GET_HUMIDITY" block="get humidity"
+    //% blockId="BME280_GET_HUMIDITY" block="humidity"
     //% weight=80 blockGap=8
     export function humidity(): number {
         get();
@@ -157,4 +173,4 @@ namespace BME280 {
     export function Address(addr: BME280_I2C_ADDRESS) {
         BME280_I2C_ADDR = addr
     }
-}
+}  
