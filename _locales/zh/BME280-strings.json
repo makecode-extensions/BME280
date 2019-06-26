@@ -1,6 +1,6 @@
 {
-    "BME280.pressure|block": "大气压",
-    "BME280.temperature|block": "温度",
+    "BME280.pressure|block": "大气压 %u",
+    "BME280.temperature|block": "温度 %u",
     "BME280.humidity|block": "湿度",
     "BME280.PowerOn|block": "打开传感器",
     "BME280.PowerOff|block": "关闭传感器",
